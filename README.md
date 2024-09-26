@@ -66,12 +66,17 @@ To generate the histograms used in Figure 2 of the paper, make sure you ran `mak
 Check for the output root file: `outdir/Figure2Sample.root`.
 The histograms in Figure 2 had about 500k samples each. The normal histogram is named `gausProtons`, and the leptokurtotic one is named `kurtoticProtons`. Draw these on the same canvas to reproduce the figure.
 
-To calculate the cumulants:
+To calculate the cumulants, set up with:
 ```bash
 cd ../calculateCumulants/
 setup 64bits
 cp calc_fig2.cc calc.cc
 make
+```
+
+Create a filelist with just the root file from the previous step:
+```bash
+ls ../generateTrees/outdir/Figure2Sample.* > file.list
 ```
 
 To calculate the cumulants for the gaussian histogram do:

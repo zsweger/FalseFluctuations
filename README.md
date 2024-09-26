@@ -56,8 +56,29 @@ Now generate the file list of UrQMD files you generated:
 ls ../roots/*.root > UrQMD.list
 ```
 
-Check that the file list name in `Analysis.xml` matches this name.
+Check that the file list name in each of the `Analysis*.xml` files matches this name.
+
+### Instructions to Reproduce Figure 2
+To generate the histograms used in Figure 2 of the paper, make sure you ran `make` as instructed above, and do:
 ```bash
-star-submit Analysis.xml
+./Calc_Fig2
 ```
-Check `outdir/` for the root files.
+Check for the output root file: `outdir/Figure2Sample.root`.
+The histograms in Figure 2 had about 500k samples each. The normal histogram is named `gausProtons`, and the leptokurtotic one is named `kurtoticProtons`. Draw these on the same canvas to reproduce the figure.
+
+To calculate the cumulants:
+```bash
+cd ../calculateCumulants/
+setup 64bits
+cp calc_fig2.cc calc.cc
+make
+```
+
+To calculate the cumulants for the gaussian histogram do:
+```bash
+./run 0
+```
+To calculate the cumulants for the leptokurtotic histogram do:
+```bash
+./run 1
+```

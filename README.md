@@ -58,6 +58,8 @@ realpath ../generateUrQMD/roots/*.root > UrQMD.list
 
 Check that the file list name in each of the `Analysis*.xml` files matches this name.
 
+Update the paths in `Analysis*.xml`.
+
 ## Instructions to Reproduce Figures 1, 6, 7, 9, and 10
 
 All of these figures use a 0.2 percent (fraction=0.002) pileup rate. Make sure you ran `make` as instructed above, and do:

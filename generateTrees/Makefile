@@ -3,7 +3,7 @@ all: ana
 
 ana:
 	@g++ -std=c++11 -o Calc_ToyModel1 calc_toymodel1.cc `root-config --libs --cflags --glibs` 
-	@g++ -o Calc_ToyModel2 calc_toymodel2.cc `root-config --libs --cflags --glibs`
+	@g++ -std=c++11 -o Calc_ToyModel2 calc_toymodel2.cc `root-config --libs --cflags --glibs`
 	@g++ -o Calc_Fig2 calc_fig2.cc `root-config --libs --cflags --glibs`
 
 submit:

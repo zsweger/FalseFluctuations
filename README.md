@@ -60,13 +60,13 @@ Check that the file list name in each of the `Analysis*.xml` files matches this 
 
 ## Instructions to Reproduce Figures 1, 6, 7, 9, and 10
 
-Make sure you ran `make` as instructed above, and do:
+All of these figures use a 0.2 percent (fraction=0.002) pileup rate. Make sure you ran `make` as instructed above, and do:
 ```bash
-star-submit Analysis_ToyModel1.xml
+./submitSinglePileupRate.sh
 ```
 This generates files in `outdir/`. We need to combine these, excluding TTrees:
 ```bash
-hadd -T PileupFigures.root outdir/*.root
+hadd -T PileupFigures.root outdir/*0.002pileupRate.root
 ``` 
 This file contains several histograms.
 
@@ -86,7 +86,7 @@ make
 
 Create a filelist with the root files generated in the previous step:
 ```bash
-realpath ../generateTrees/outdir/*.root > file.list
+realpath ../generateTrees/outdir/*0.002pileupRate.root > file.list
 ```
 
 To generate the cumulants that went into the right side of Figure 9, do
@@ -102,6 +102,52 @@ To generate the cumulants used in the left side of Figure 10, do
 - `./run 10` for p>1.7GeV
 - `./run 11` for p>1.8GeV
 - `./run 12` for p>1.9GeV 
+
+
+## Instructions to Reproduce Figures 8, 12, and 13
+
+All of these figures use a 1 percent (fraction=0.01) detector failure rate. Make sure you ran `make` as instructed above, and do:
+```bash
+./submitSingleFailureRate.sh
+```
+This generates files in `outdir/`. We need to combine these, excluding TTrees:
+```bash
+hadd -T FailureFigures.root outdir/*0.01failureRate.root
+```
+This file contains several histograms.
+
+1. The baseline TH2 in Figure 7 is named `refMult3AndProtons_all`. The AB panel is supplemented with `refMult3AndProtons_godbad`, the BA panel is supplemented with `refMult3AndProtons_badgod`, and the BB panel is supplemented with `refMult3AndProtons_badbad`.
+2. The histograms for the left side of Figure 12 are named `npAA`, `npAB`, `npBA`, and `npBB`.
+3. The analysis window shown on the right side of Figure 13 is contained in the histogram titled `hpT_y`.
+
+To calculate the cumulants for the right side of Figure 12, and the left side of Figure 13, do the following:
+```bash
+cd ../calculateCumulants/
+setup 64bits
+cp calc_toymodel2.cc calc.cc
+make
+```
+
+Create a filelist with the root files generated in the previous step:
+```bash
+realpath ../generateTrees/outdir/*0.01failureRate.root > file.list
+```
+
+To generate the cumulants that went into the right side of Figure 12, do
+- `./run 0` for panel AA
+- `./run 1` for panel AB
+- `./run 2` for panel BA
+- `./run 3` for panel BB
+
+To generate the cumulants used in the left side of Figure 13, do
+- `./run 0`  for the truth
+- `./run 11` for p>1.7GeV
+- `./run 12` for p>1.8GeV
+- `./run 13` for p>1.9GeV
+- `./run 14` for p>2.0GeV
+- `./run 15` for p>2.1GeV 
+
+
 
 ## Instructions to Reproduce Figure 2
 To generate the histograms used in Figure 2 of the paper, make sure you ran `make` as instructed above, and do:
@@ -133,4 +179,75 @@ To calculate the cumulants for the leptokurtotic histogram do:
 ./run 1
 ```
 
-## Instructions to Reproduce
+## Instructions to Reproduce Figure 11
+
+The pileup fractions used in Figure 11 were:
+- 0.00001
+- 0.00002
+- 0.00005
+- 0.0001
+- 0.0002
+- 0.0005
+- 0.001
+- 0.002
+- 0.005
+- 0.01
+
+
+
+Make sure you ran `make` as instructed above, and do:
+```bash
+./submitPileupScan.sh
+```
+Once all the jobs have finished, calculate the cumulants by doing the following:
+```bash
+cd ../calculateCumulants/
+setup 64bits
+cp calc_toymodel1.cc calc.cc
+make
+```
+
+No need to create a new filelist or delete an old one. Just do
+```bash
+nohup ./submitPileupScan.sh > nohup_pileupscan.out &
+```
+
+The output files are in the `Output` directory.
+
+
+## Instructions to Reproduce Figure 14
+
+The failure rates used in Figure 14 were:
+- 0.00001
+- 0.00002
+- 0.00005
+- 0.0001
+- 0.0002
+- 0.0005
+- 0.001
+- 0.002
+- 0.005
+- 0.01
+
+
+
+Make sure you ran `make` as instructed above, and do:
+```bash
+./submitFailureScan.sh
+```
+
+Once all the jobs have finished, calculate the cumulants by doing the following:
+```bash
+cd ../calculateCumulants/
+setup 64bits
+cp calc_toymodel2.cc calc.cc
+make
+```
+
+No need to create a new filelist or delete an old one. Just do
+```bash
+nohup ./submitFailureScan.sh > nohup_failurescan.out &
+```
+
+The output files are in the `Output` directory.
+

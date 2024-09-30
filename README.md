@@ -80,7 +80,28 @@ To calculate the cumulants for the right side of Figure 9, and the left side of 
 ```bash
 cd ../calculateCumulants/
 setup 64bits
+cp calc_toymodel1.cc calc.cc
+make
 ``` 
+
+Create a filelist with the root files generated in the previous step:
+```bash
+realpath ../generateTrees/outdir/*.root > file.list
+```
+
+To generate the cumulants that went into the right side of Figure 9, do
+- `./run 0` for panel AA
+- `./run 1` for panel AB
+- `./run 2` for panel BA
+- `./run 3` for panel BB
+
+To generate the cumulants used in the left side of Figure 10, do 
+- `./run 0`  for the truth
+- `./run 8`  for p>1.5GeV
+- `./run 9`  for p>1.6GeV
+- `./run 10` for p>1.7GeV
+- `./run 11` for p>1.8GeV
+- `./run 12` for p>1.9GeV 
 
 ## Instructions to Reproduce Figure 2
 To generate the histograms used in Figure 2 of the paper, make sure you ran `make` as instructed above, and do:
@@ -100,7 +121,7 @@ make
 
 Create a filelist with just the root file from the previous step:
 ```bash
-ls ../generateTrees/outdir/Figure2Sample.* > file.list
+realpath ../generateTrees/outdir/Figure2Sample.* > file.list
 ```
 
 To calculate the cumulants for the gaussian histogram do:

@@ -31,9 +31,14 @@ And check that the root files are in the directory `roots/`
 
 Our UrQMD files are now generated and we can move on to processing them.
 
-## Analysis
+# Analysis
 
-This step creates root files containing event trees of proton number given pT and y cuts, refMult3, nPart, and impact parameter.
+This section describes how to generate the figures in the paper
+
+
+## Instructions to Reproduce Figures 1, 6, 7, 9, and 10
+
+First create event trees of proton number given pT and y cuts, refMult3, nPart, and impact parameter.
 
 ```bash
 setup 32bits
@@ -59,8 +64,6 @@ realpath ../generateUrQMD/roots/*.root > UrQMD.list
 Check that the file list name in each of the `Analysis*.xml` files matches this name.
 
 Update the paths in `Analysis*.xml`.
-
-## Instructions to Reproduce Figures 1, 6, 7, 9, and 10
 
 All of these figures use a 0.2 percent (fraction=0.002) pileup rate. Make sure you ran `make` as instructed above, and do:
 ```bash
@@ -108,6 +111,33 @@ To generate the cumulants used in the left side of Figure 10, do
 
 ## Instructions to Reproduce Figures 8, 12, and 13
 
+First create event trees of proton number given pT and y cuts, refMult3, nPart, and impact parameter.
+
+```bash
+setup 32bits
+cd generateTrees/
+```
+
+Update the energy in `EnergyConfig.h`.
+
+Clean the directory.
+```bash
+./clean.sh
+```
+And compile:
+```bash
+make
+```
+
+Now generate the file list of UrQMD files you generated:
+```
+realpath ../generateUrQMD/roots/*.root > UrQMD.list
+```
+
+Check that the file list name in each of the `Analysis*.xml` files matches this name.
+
+Update the paths in `Analysis*.xml`.
+
 All of these figures use a 1 percent (fraction=0.01) detector failure rate. Make sure you ran `make` as instructed above, and do:
 ```bash
 ./submitSingleFailureRate.sh
@@ -152,6 +182,27 @@ To generate the cumulants used in the left side of Figure 13, do
 
 
 ## Instructions to Reproduce Figure 2
+
+First generate trees:
+
+```bash
+setup 32bits
+cd generateTrees/
+```
+
+Clean the directory.
+```bash
+./clean.sh
+```
+And compile:
+```bash
+make
+```
+
+Check that the file list name in each of the `Analysis*.xml` files matches this name.
+
+Update the paths in `Analysis*.xml`.
+
 To generate the histograms used in Figure 2 of the paper, make sure you ran `make` as instructed above, and do:
 ```bash
 ./Calc_Fig2
@@ -195,7 +246,32 @@ The pileup fractions used in Figure 11 were:
 - 0.005
 - 0.01
 
+First create event trees of proton number given pT and y cuts, refMult3, nPart, and impact parameter.
 
+```bash
+setup 32bits
+cd generateTrees/
+```
+
+Update the energy in `EnergyConfig.h`.
+
+Clean the directory.
+```bash
+./clean.sh
+```
+And compile:
+```bash
+make
+```
+
+Now generate the file list of UrQMD files you generated:
+```
+realpath ../generateUrQMD/roots/*.root > UrQMD.list
+```
+
+Check that the file list name in each of the `Analysis*.xml` files matches this name.
+
+Update the paths in `Analysis*.xml`.
 
 Make sure you ran `make` as instructed above, and do:
 ```bash
@@ -231,7 +307,32 @@ The failure rates used in Figure 14 were:
 - 0.005
 - 0.01
 
+First create event trees of proton number given pT and y cuts, refMult3, nPart, and impact parameter.
 
+```bash
+setup 32bits
+cd generateTrees/
+```
+
+Update the energy in `EnergyConfig.h`.
+
+Clean the directory.
+```bash
+./clean.sh
+```
+And compile:
+```bash
+make
+```
+
+Now generate the file list of UrQMD files you generated:
+```
+realpath ../generateUrQMD/roots/*.root > UrQMD.list
+```
+
+Check that the file list name in each of the `Analysis*.xml` files matches this name.
+
+Update the paths in `Analysis*.xml`.
 
 Make sure you ran `make` as instructed above, and do:
 ```bash

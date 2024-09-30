@@ -3,10 +3,10 @@
 <job maxFilesPerProcess="100" softLimits="true" simulateSubmission="false" fileListSyntax="xrootd">
   <!--<stdout discard="true" />-->
 
-  <input URL="filelist:/star/data03/pwg/sweger/UrQMD/Official_TimingFlucPaper/generateTrees/UrQMD.list"/>
-  <stderr URL="file:/star/data03/pwg/sweger/UrQMD/Official_TimingFlucPaper/generateTrees/log/$JOBID.err"/>
-  <stdout URL="file:/star/data03/pwg/sweger/UrQMD/Official_TimingFlucPaper/generateTrees/log/$JOBID.out"/>
-  <output fromScratch="*.root" toURL="file:/star/data03/pwg/sweger/UrQMD/Official_TimingFlucPaper/generateTrees/outdir/" />
+  <input URL="filelist:/path/to/generateTrees/UrQMD.list"/>
+  <stderr URL="file:/path/to/generateTrees/log/$JOBID.err"/>
+  <stdout URL="file:/path/to/generateTrees/log/$JOBID.out"/>
+  <output fromScratch="*.root" toURL="file:/path/to/generateTrees/outdir/" />
 
   <command>
     ./Calc_ToyModel1 $JOBID $FILELIST "&PILEUP_RATE;"
@@ -20,7 +20,7 @@
 
 
   <Generator>
-    <Location>/star/data03/pwg/sweger/UrQMD/Official_TimingFlucPaper/generateTrees/submit_dir/</Location>
-    <ReportLocation>/star/data03/pwg/sweger/UrQMD/Official_TimingFlucPaper/generateTrees/submit_dir/</ReportLocation>
+    <Location>/path/to/generateTrees/submit_dir/</Location>
+    <ReportLocation>/path/to/generateTrees/submit_dir/</ReportLocation>
   </Generator>
 </job>

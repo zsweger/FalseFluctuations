@@ -4,7 +4,7 @@
   <!--<stdout discard="true" />-->
 
   <input URL="filelist:/path/to/generateTrees/UrQMD.list"/>
-  <stderr URL="file:/path/togenerateTrees/log/$JOBID.err"/>
+  <stderr URL="file:/path/to/generateTrees/log/$JOBID.err"/>
   <stdout URL="file:/path/to/generateTrees/log/$JOBID.out"/>
   <output fromScratch="*.root" toURL="file:/path/to/generateTrees/outdir/" />
 

@@ -97,8 +97,8 @@ int main(int argc, char* argv[])
             tree->GetEntry(nEntry);
             if(nEntry !=0 && nEntry%1000000==0) cout<<nEntry<<endl;
 	    int thisrefmult3=0;
-	    if(INDEX1==0 || INDEX1==2)thisrefmult3=refmult3[0];
-            else if(INDEX1>=1)thisrefmult3=refmult3[1];
+	    if(INDEX1==0 || INDEX1==1)thisrefmult3=refmult3[0];
+            else if(INDEX1>=2)thisrefmult3=refmult3[1];
             int Np = 0;
             Np = np[INDEX1];
 
